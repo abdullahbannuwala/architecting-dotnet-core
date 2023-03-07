@@ -3,6 +3,7 @@ using GloboTicket.TicketManagement.Api.Services;
 using GloboTicket.TicketManagement.Api.Utility;
 using GloboTicket.TicketManagement.Application;
 using GloboTicket.TicketManagement.Application.Contracts;
+using GloboTicket.TicketManagement.Identity;
 using GloboTicket.TicketManagement.Infrastructure;
 using GloboTicket.TicketManagement.Persistence;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace GloboTicket.TicketManagement.Api
             services.AddApplicationServices();
             services.AddInfrastructureServices(Configuration);
             services.AddPersistenceServices(Configuration);
+            services.AddIdentityServices(Configuration);
 
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 

@@ -1,9 +1,12 @@
+using GloboTicket.TicketManagement.Identity.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using System;
 using System.Threading.Tasks;
 
 namespace GloboTicket.TicketManagement.Api
@@ -28,6 +31,17 @@ namespace GloboTicket.TicketManagement.Api
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
 
+                try
+                {
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+                    await Identity.Seed.UserCreator.SeedAsync(userManager);
+                    Log.Information("Application Starting");
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning(ex, "An error occured while starting the application");
+                }
             }
 
             host.Run();
