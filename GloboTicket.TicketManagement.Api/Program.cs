@@ -10,7 +10,7 @@ namespace GloboTicket.TicketManagement.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -27,6 +27,7 @@ namespace GloboTicket.TicketManagement.Api
             {
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+
             }
 
             host.Run();
