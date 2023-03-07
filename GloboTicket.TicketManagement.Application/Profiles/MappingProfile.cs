@@ -2,6 +2,8 @@
 using GloboTicket.TicketManagement.Application.Features.Categories.Commands.CreateCateogry;
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList;
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents;
+using GloboTicket.TicketManagement.Application.Features.Employees.Commands.CreateEmployee;
+using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeesList;
 using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
@@ -12,7 +14,7 @@ using GloboTicket.TicketManagement.Domain.Entities;
 
 namespace GloboTicket.TicketManagement.Application.Profiles
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -30,6 +32,10 @@ namespace GloboTicket.TicketManagement.Application.Profiles
             CreateMap<Category, CreateCategoryDto>();
 
             CreateMap<Order, OrdersForMonthDto>();
+
+
+            CreateMap<Employee, EmployeeListVm>().ReverseMap();
+            CreateMap<Employee, CreateEmployeeCommand>().ReverseMap();
         }
     }
 }

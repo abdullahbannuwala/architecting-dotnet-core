@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GloboTicket.TicketManagement.Persistence
 {
-    public class GloboTicketDbContext: DbContext
+    public class GloboTicketDbContext : DbContext
     {
         private readonly ILoggedInUserService _loggedInUserService;
 
@@ -26,6 +26,8 @@ namespace GloboTicket.TicketManagement.Persistence
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
