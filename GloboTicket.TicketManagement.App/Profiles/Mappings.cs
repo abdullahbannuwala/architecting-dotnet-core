@@ -27,6 +27,7 @@ namespace GloboTicket.TicketManagement.App.Profiles
             CreateMap<OrdersForMonthDto, OrdersForMonthListViewModel>().ReverseMap();
 
             CreateMap<EmployeeListVm, EmployeeListViewModel>().ReverseMap();
+            CreateMap<EmployeeDetailViewModel, CreateEmployeeCommand>().ReverseMap();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace GloboTicket.TicketManagement.App.Pages
 
         protected void AddNewEmployee()
         {
-            // NavigationManager.NavigateTo("/eventdetails");
+            NavigationManager.NavigateTo("/employeedetails");
         }
 
 
