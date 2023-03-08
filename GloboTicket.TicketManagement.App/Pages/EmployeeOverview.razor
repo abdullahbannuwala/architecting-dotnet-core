@@ -1,0 +1,40 @@
+﻿@page "/employeeoverview"
+
+<h3>Employee Overview</h3>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="AddNewEmployee" class="mr-1">Add employee</button>
+</div>
+
+
+
+@if (Employees == null)
+{
+<p><em>Loading...</em></p>
+}
+else
+{
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>BirthDay</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var ev in Employees)
+            {
+        <tr>
+            <td class="event-name">@ev.Name </td>
+            <td class="event-date">@ev.DateofBirth.ToShortDateString() </td>
+ @*           <td>
+                <a href="@($"eventdetails/{ev.EmployeeId}")" class="event-purchase-button btn">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>*@
+        </tr>
+            }
+    </tbody>
+</table>
+}
+
