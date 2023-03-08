@@ -1,4 +1,5 @@
 ﻿using GloboTicket.TicketManagement.Application.Features.Employees.Commands.CreateEmployee;
+using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeeDetail;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeesList;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,13 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         {
             var id = await _mediator.Send(createEmployeeCommand);
             return Ok(id);
+        }
+
+        [HttpGet("{id}", Name = "GetEmployeeById")]
+        public async Task<ActionResult<EmployeeDetailVm>> GetEmployeeById(Guid id)
+        {
+            var getEmployeeDetailQuery = new GetEmployeeDetailQuery() { Id = id };
+            return Ok(await _mediator.Send(getEmployeeDetailQuery));
         }
 
     }
