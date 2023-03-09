@@ -3,6 +3,7 @@ using GloboTicket.TicketManagement.Application.Features.Categories.Commands.Crea
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList;
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents;
 using GloboTicket.TicketManagement.Application.Features.Employees.Commands.CreateEmployee;
+using GloboTicket.TicketManagement.Application.Features.Employees.Commands.UpdateEmployee;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeeDetail;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeesList;
 using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
@@ -38,6 +39,7 @@ namespace GloboTicket.TicketManagement.Application.Profiles
             CreateMap<Employee, EmployeeListVm>().ReverseMap();
             CreateMap<Employee, CreateEmployeeCommand>().ReverseMap();
             CreateMap<Employee, EmployeeDetailVm>().ReverseMap();
+            CreateMap<Employee, UpdateEmployeeCommand>().ReverseMap();
         }
     }
 }

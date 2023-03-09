@@ -1,4 +1,5 @@
 ﻿using GloboTicket.TicketManagement.Application.Features.Employees.Commands.CreateEmployee;
+using GloboTicket.TicketManagement.Application.Features.Employees.Commands.UpdateEmployee;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeeDetail;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeesList;
 using MediatR;
@@ -44,6 +45,16 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         {
             var getEmployeeDetailQuery = new GetEmployeeDetailQuery() { Id = id };
             return Ok(await _mediator.Send(getEmployeeDetailQuery));
+        }
+
+        [HttpPut(Name = "UpdateEmployee")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update([FromBody] UpdateEmployeeCommand updateEmployeeCommand)
+        {
+            await _mediator.Send(updateEmployeeCommand);
+            return NoContent();
         }
 
     }

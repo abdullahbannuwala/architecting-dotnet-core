@@ -9,11 +9,5 @@ namespace GloboTicket.TicketManagement.Application.Features.Employees.Commands.C
         public string Email { get; set; }
         public DateTime DateofBirth { get; set; }
 
-        public override string ToString()
-        {
-            return $"Employee name: {Name}";
-        }
-
-
     }
 }
