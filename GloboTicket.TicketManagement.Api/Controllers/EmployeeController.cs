@@ -1,4 +1,5 @@
 ﻿using GloboTicket.TicketManagement.Application.Features.Employees.Commands.CreateEmployee;
+using GloboTicket.TicketManagement.Application.Features.Employees.Commands.DeleteEmployee;
 using GloboTicket.TicketManagement.Application.Features.Employees.Commands.UpdateEmployee;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeeDetail;
 using GloboTicket.TicketManagement.Application.Features.Employees.Queries.GetEmployeesList;
@@ -54,6 +55,17 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         public async Task<ActionResult> Update([FromBody] UpdateEmployeeCommand updateEmployeeCommand)
         {
             await _mediator.Send(updateEmployeeCommand);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}", Name = "DeleteEmployee")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var deleteEventCommand = new DeleteEmployeeCommand() { EmployeeId = id };
+            await _mediator.Send(deleteEventCommand);
             return NoContent();
         }
 
